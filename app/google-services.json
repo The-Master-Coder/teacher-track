@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "590986516416",
+    "firebase_url": "https://factrack-114dd.firebaseio.com",
+    "project_id": "factrack-114dd",
+    "storage_bucket": "factrack-114dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590986516416:android:d8a163ac6d773ba5",
+        "android_client_info": {
+          "package_name": "com.factrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590986516416-phqpfckkjlcivouf0njrr83m0oejd154.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.factrack",
+            "certificate_hash": "08b5526aa90251d8f773796fae17f1c53ff3d279"
+          }
+        },
+        {
+          "client_id": "590986516416-ve2r22flcp4plo47990f1f9139630arc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAag7BA9iPwE0T2PwKXhfj4XRmbnSujiec"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590986516416-ve2r22flcp4plo47990f1f9139630arc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
