@@ -56,14 +56,14 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        final TeacherData movie = teacherListFiltered.get(position);
-        holder.name.setText(movie.getName());
-        holder.designation.setText(movie.getDesignation());
-        holder.building.setText(movie.getBuilding());
-        holder.roomNo.setText(movie.getRoomNo());
+        final TeacherData teacher = teacherListFiltered.get(position);
+        holder.name.setText( teacher.getName());
+        holder.designation.setText( teacher.getDesignation());
+        holder.building.setText( teacher.getBuilding());
+        holder.roomNo.setText( teacher.getRoomNo());
         //TODO :
         Glide.with(context)
-                .load(movie.getImage())
+                .load( teacher.getImage())
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.image);
     }

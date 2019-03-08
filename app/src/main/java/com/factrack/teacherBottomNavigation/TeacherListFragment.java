@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,8 +20,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.factrack.R;
+import com.factrack.containers.teacherFormData;
 import com.factrack.recyclerView.TeacherAdapter;
 import com.factrack.teacherData.TeacherData;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +54,11 @@ public class TeacherListFragment extends Fragment   {
     private TextView mEmptyView;
     private Context context;
 
-
+    private FirebaseAuth.AuthStateListener authListener;
+    private FirebaseAuth auth;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private DatabaseReference root = FirebaseDatabase.getInstance().getReference(), faculty;
+    private String userId;
   //  private OnFragmentInteractionListener mListener;
 
     public TeacherListFragment() {
@@ -107,8 +120,32 @@ public class TeacherListFragment extends Fragment   {
     }
     private void fetchTeacherList() {
 
-        ArrayList <TeacherData > items = new ArrayList<>();
-        for(int i = 0;i < 3;i++) {
+        userId = user.getUid();
+        faculty = root.child("faculty");
+        faculty.keepSynced(true);
+
+        faculty.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                final ArrayList <TeacherData > items = new ArrayList<>();
+
+                for(DataSnapshot faculties: dataSnapshot.getChildren()) {
+                    teacherFormData teacher_info = faculties.getValue(teacherFormData.class);
+                    items.add(0,new TeacherData(teacher_info.name,teacher_info.imageLink,teacher_info.designation,teacher_info.building,teacher_info.roomNo,faculties.getKey()) );
+                    //Log.e("name",teacher_info.imageLink);
+                }
+                teacherList.clear();
+                teacherList.addAll(items);
+               // Log.e("list",""+ teacherList.size());
+                mAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+      /*  for(int i = 0;i < 3;i++) {
             items.add(0,new TeacherData("nidheesh","https://www.gstatic.com/webp/gallery/1.jpg","student","bh1","259"));
         }
         for(int i = 0;i < 3;i++) {
@@ -123,10 +160,8 @@ public class TeacherListFragment extends Fragment   {
             items.add(0,new TeacherData("abhishek","https://www.gstatic.com/webp/gallery/1.jpg","student","bh1","259"));
 
         }
+        */
 
-        teacherList.clear();
-        teacherList.addAll(items);
-        mAdapter.notifyDataSetChanged();
     }
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -144,7 +179,7 @@ public class TeacherListFragment extends Fragment   {
         // TODO : add animation
         recyclerView.setNestedScrollingEnabled(false);
         fetchTeacherList();
-        recyclerViewEmpty();
+        //recyclerViewEmpty();
     }
 
     @Override

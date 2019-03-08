@@ -29,12 +29,12 @@ public class TeacherBottomNav extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     toolbar.setTitle(R.string.title_home);
-                    fragment = new TeacherListFragment();
+                    fragment = new TeacherView();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_dashboard:
                     toolbar.setTitle(R.string.title_dashboard);
-                    fragment = new TeacherView();
+                    fragment = new TeacherListFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:
@@ -60,7 +60,7 @@ public class TeacherBottomNav extends AppCompatActivity {
         CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) navigation.getLayoutParams();
         layoutParams.setBehavior(new BottomNavigationBehavior());
 
-        fragment = new TeacherListFragment();
+        fragment = new TeacherView();
         loadFragment(fragment);
     }
 

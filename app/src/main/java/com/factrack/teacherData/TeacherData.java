@@ -6,12 +6,14 @@ public class TeacherData {
     String designation;
     String building;
     String roomNo;
-    public TeacherData(String name,String image,String designation,String building,String roomNo) {
+    String uid;
+    public TeacherData(String name,String image,String designation,String building,String roomNo,String uid) {
         this.name = name;
         this.image = image;
         this.designation = designation;
         this.building = building;
         this.roomNo = roomNo;
+        this.uid = uid;
     }
     public String getName() {
         return name;
@@ -49,4 +51,6 @@ public class TeacherData {
     public String getRoomNo() {
         return this.roomNo;
     }
+    public String  getUid() {return  this.uid;}
+    public void setUid(String uid) {this.uid = uid;}
 }
