@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import com.factrack.R;
 import com.factrack.teacherData.TeacherData;
+import com.factrack.teacherView.TeacherView;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,9 +12,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 
@@ -35,7 +34,7 @@ public class TeacherBottomNav extends AppCompatActivity {
                     return true;
                 case R.id.navigation_dashboard:
                     toolbar.setTitle(R.string.title_dashboard);
-                    fragment = new TeacherListFragment();
+                    fragment = new TeacherView();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:

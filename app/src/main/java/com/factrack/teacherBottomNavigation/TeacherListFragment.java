@@ -164,9 +164,7 @@ public class TeacherListFragment extends Fragment   {
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                System.out.println("search query submit");
-                mAdapter.getFilter().filter(query);
-                Log.e("madapter","" + mAdapter.getItemCount());
+
                 return true;
             }
 
@@ -174,6 +172,7 @@ public class TeacherListFragment extends Fragment   {
             public boolean onQueryTextChange(String newText) {
                 System.out.println("search query submit");
                 mAdapter.getFilter().filter(newText);
+               // recyclerViewEmpty();
                 Log.e("madapter","" + mAdapter.getItemCount());
                 return true;
             }
