@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f1f5f7"
+    tools:context=".teacherView.TeacherView">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -61,6 +64,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/faculty_name"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="45dp"
                                 android:text="@string/FacultyName"
@@ -70,6 +74,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/faculty_designation"
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:text="@string/FacultyDesignation"
@@ -157,6 +162,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/faculty_address"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
@@ -183,6 +189,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/faculty_phone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
@@ -208,6 +215,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/faculty_mobile"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
@@ -233,63 +241,13 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/faculty_email"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
                                 android:text="@string/kp_email_office"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/EmailPersonal"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/kp_email_personal"
-                                android:textSize="12sp" />
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/Homepage1"
-                                android:textSize="12sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="left"
-                                android:layout_marginLeft="20dp"
-                                android:layout_marginTop="10dp"
-                                android:text="@string/kp_profilepage"
                                 android:textSize="12sp" />
 
                         </LinearLayout>
@@ -310,6 +268,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
+                                android:id="@+id/faculty_homepage"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="left"
@@ -440,4 +399,4 @@
 
     </RelativeLayout>
 
-</ScrollView>
+</android.support.v4.widget.NestedScrollView>
