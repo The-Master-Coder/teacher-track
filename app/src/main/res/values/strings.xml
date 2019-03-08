@@ -49,4 +49,32 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="FacultyName">K.P. Singh</string>
+    <string name="FacultyDesignation">Asst. Professor\nDept. of IT.\nIIIT-Allahabad</string>
+    <string name="ContactDetails">Contact Details</string>
+    <string name="OfficeAddress">Office Address:</string>
+    <string name="PhoneOffice">Phone (Office):</string>
+    <string name="PhonePersonal">"\t\t\t(Personal):"</string>
+    <string name="EmailOffice">E-mail (Office):</string>
+    <string name="EmailPersonal">"\t\t\t(Personal):"</string>
+    <string name="Homepage1">Profile page:</string>
+    <string name="Homepage2">Homepage:</string>
+
+    <!-- KP Singh details for dummy use-->
+    <string name="kp_office">"4207 (CC-II)\nIndian Institute of Information Technology - Allahabad\nDevghat, Jhalwa,\nAllahabad 211 015, (UP) INDIA"</string>
+    <string name="kp_phone_office">+91-532-2922226</string>
+    <string name="kp_phone_personal">N.A.</string>
+    <string name="kp_email_office">kpsingh@iiita.ac.in</string>
+    <string name="kp_email_personal">N.A.</string>
+    <string name="kp_profilepage">http://profile.iiita.ac.in/kpsingh/</string>
+    <string name="kp_homepage">https://it.iiita.ac.in/?pg=facultypage&amp;uid=kpsingh</string>
+
+    <string name="Schedule">Schedule</string>
+
+    <string name="Monday">Monday</string>
+    <string name="Tuesday">Tuesday</string>
+    <string name="Wednesday">Wednesday</string>
+    <string name="Thursday">Thursday</string>
+    <string name="Friday">Friday</string>
+
 </resources>

@@ -22,8 +22,6 @@
     <color name="login_btn">#4b4a4a</color>
     <color name="login_btn_text">#D81B60</color>
 
-
-
     %login effect colors
     <color name="purple_500">#9C27B0</color>
     <color name="deep_purple_500">#673AB7</color>
@@ -45,5 +43,10 @@
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
+
+    <color name="gray300">#E0E0E0</color>
+    <color name="border_black">#FF000000</color>
+    <color name="cyanA200">#18FFFF</color>
+    <color name="lightBlue200">#81D4FA</color>
 
 </resources>
