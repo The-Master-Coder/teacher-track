@@ -77,4 +77,49 @@
     <string name="Thursday">Thursday</string>
     <string name="Friday">Friday</string>
 
+    <string-array name="buildings">
+        <item>Admin</item>
+        <item>CC-1</item>
+        <item>CC-2</item>
+        <item>CC-3</item>
+        <item>LT</item>
+        <item>Library</item>
+        <item>Cafeteria</item>
+        <item>Outside</item>
+    </string-array>
+
+    <string name="chooseDepartment">Choose Department</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="homepage_personal">Personal Homepage</string>
+    <string name="number_office">Office number</string>
+    <string name="number_personal">Personal number</string>
+    <string name="address">Address</string>
+    <string name="department">Department</string>
+    <string name="name">Name</string>
+    <string name="designation">Designation</string>
+
+
+    <string-array name="departments">
+        <item>IT</item>
+        <item>ECE</item>
+        <item>Applied Sciences</item>
+        <item>MBA</item>
+
+    </string-array>
+
+    <string-array name="days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+
+    </string-array>
+
+
+
 </resources>
