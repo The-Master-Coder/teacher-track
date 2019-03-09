@@ -21,6 +21,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.factrack.R;
+import com.factrack.containers.Slot;
 import com.factrack.containers.teacherFormData;
 import com.factrack.recyclerView.TeacherAdapter;
 import com.factrack.recyclerView.teacherClickListener;
@@ -37,7 +38,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -123,6 +127,10 @@ public class TeacherListFragment extends Fragment   {
             mEmptyView.setVisibility(View.GONE);
         }
     }
+    private void setCal(Calendar cal,int hour,int minute) {
+        cal.set(Calendar.HOUR_OF_DAY, hour);
+        cal.set(Calendar.MINUTE, minute);
+    }
     private void fetchTeacherList() {
 
         userId = user.getUid();
@@ -133,15 +141,44 @@ public class TeacherListFragment extends Fragment   {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final ArrayList <TeacherData > items = new ArrayList<>();
+                Calendar curr = Calendar.getInstance();
+                Map<String, List<Slot>> schedule ;
+                Map <Integer,String> mapDay = new HashMap<>();
+                mapDay.put(1,"sunday");
+                mapDay.put(2,"monday");
+                mapDay.put(3,"tuesday");
+                mapDay.put(4,"wednesday");
+                mapDay.put(5,"thursday");
+                mapDay.put(6,"friday");
+                mapDay.put(7,"saturday");
 
                 for(DataSnapshot faculties: dataSnapshot.getChildren()) {
                     teacherFormData teacher_info = faculties.getValue(teacherFormData.class);
-                    items.add(0,new TeacherData(teacher_info.name,teacher_info.imageLink,teacher_info.designation,teacher_info.building,teacher_info.roomNo,faculties.getKey()) );
+                    schedule = teacher_info.schedule.schedules;
+                    int day = curr.DAY_OF_WEEK;
+                    Calendar start = Calendar.getInstance();
+                    Calendar end = Calendar.getInstance();
+                    List <Slot> slots = schedule.get(mapDay.get(day));
+                    boolean flag = false;
+                    if(slots != null) {
+                        for (int i = 0; i < slots.size(); i++) {
+                            setCal(start, slots.get(i).startHour, slots.get(i).startMinute);
+                            setCal(end, slots.get(i).endHour, slots.get(i).endMinute);
+
+                            if (curr.after(start) && curr.before(end)) {
+                                flag = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    if(flag)
+                        items.add(0,new TeacherData(teacher_info.name,teacher_info.imageLink,teacher_info.designation,teacher_info.building,teacher_info.roomNo,faculties.getKey()) );
                     //Log.e("name",teacher_info.imageLink);
                 }
                 teacherList.clear();
                 teacherList.addAll(items);
-               // Log.e("list",""+ teacherList.size());
+                // Log.e("list",""+ teacherList.size());
                 mAdapter.notifyDataSetChanged();
             }
 

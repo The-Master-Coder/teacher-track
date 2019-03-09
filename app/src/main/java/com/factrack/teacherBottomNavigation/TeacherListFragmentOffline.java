@@ -1,5 +1,4 @@
-package com.factrack.studentBottomNavigation;
-
+package com.factrack.teacherBottomNavigation;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,7 +27,6 @@ import com.factrack.recyclerView.TeacherAdapter;
 import com.factrack.recyclerView.teacherClickListener;
 import com.factrack.recyclerView.teacherTouchListener;
 import com.factrack.studentBottomNavigation.StudentBottomNav;
-import com.factrack.teacherBottomNavigation.TeacherBottomNav;
 import com.factrack.teacherData.TeacherData;
 import com.factrack.teacherView.TeacherProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -48,15 +46,15 @@ import java.util.Map;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link com.factrack.teacherBottomNavigation.TeacherListFragment.OnFragmentInteractionListener} interface
+ * {@link TeacherListFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link com.factrack.teacherBottomNavigation.TeacherListFragment#newInstance} factory method to
+ * Use the {@link TeacherListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TeacherListFragmentStu extends Fragment   {
+public class TeacherListFragmentOffline extends Fragment   {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String TAG = com.factrack.studentBottomNavigation.TeacherListFragmentStu.class.getSimpleName();
+    private static final String TAG = TeacherListFragmentOffline.class.getSimpleName();
 
     // TODO: Rename and change types of parameters
     private RecyclerView recyclerView;
@@ -72,7 +70,7 @@ public class TeacherListFragmentStu extends Fragment   {
     private String userId;
     //  private OnFragmentInteractionListener mListener;
 
-    public TeacherListFragmentStu() {
+    public TeacherListFragmentOffline() {
         // Required empty public constructor
     }
 
@@ -85,8 +83,8 @@ public class TeacherListFragmentStu extends Fragment   {
      * @return A new instance of fragment TeacherListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static com.factrack.studentBottomNavigation.TeacherListFragmentStu newInstance() {
-        com.factrack.studentBottomNavigation.TeacherListFragmentStu fragment = new com.factrack.studentBottomNavigation.TeacherListFragmentStu();
+    public static TeacherListFragmentOffline newInstance() {
+        TeacherListFragmentOffline fragment = new TeacherListFragmentOffline();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -129,7 +127,7 @@ public class TeacherListFragmentStu extends Fragment   {
             mEmptyView.setVisibility(View.GONE);
         }
     }
-    private void setCal(Calendar cal, int hour, int minute) {
+    private void setCal(Calendar cal,int hour,int minute) {
         cal.set(Calendar.HOUR_OF_DAY, hour);
         cal.set(Calendar.MINUTE, minute);
     }
@@ -167,13 +165,15 @@ public class TeacherListFragmentStu extends Fragment   {
                             setCal(start, slots.get(i).startHour, slots.get(i).startMinute);
                             setCal(end, slots.get(i).endHour, slots.get(i).endMinute);
 
-                            if (curr.after(start) && curr.before(end)) {
+                            if (curr.before(start) && curr.after(end)) {
                                 flag = true;
                                 break;
                             }
                         }
                     }
-
+                    else {
+                        flag = true;
+                    }
                     if(flag)
                         items.add(0,new TeacherData(teacher_info.name,teacher_info.imageLink,teacher_info.designation,teacher_info.building,teacher_info.roomNo,faculties.getKey()) );
                     //Log.e("name",teacher_info.imageLink);
@@ -256,7 +256,7 @@ public class TeacherListFragmentStu extends Fragment   {
     public void onCreateOptionsMenu (Menu menu, MenuInflater inflater){
         inflater.inflate(R.menu.action_search, menu);
         MenuItem item = menu.findItem(R.id.action_search);
-        SearchView sv = new SearchView(((StudentBottomNav) getActivity()).getSupportActionBar().getThemedContext());
+        SearchView sv = new SearchView(((TeacherBottomNav) getActivity()).getSupportActionBar().getThemedContext());
 
         MenuItemCompat.setShowAsAction(item, MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItemCompat.SHOW_AS_ACTION_IF_ROOM);
         MenuItemCompat.setActionView(item, sv);

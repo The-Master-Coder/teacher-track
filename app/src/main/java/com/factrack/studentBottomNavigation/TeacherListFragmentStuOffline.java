@@ -53,10 +53,10 @@ import java.util.Map;
  * Use the {@link com.factrack.teacherBottomNavigation.TeacherListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TeacherListFragmentStu extends Fragment   {
+public class TeacherListFragmentStuOffline extends Fragment   {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String TAG = com.factrack.studentBottomNavigation.TeacherListFragmentStu.class.getSimpleName();
+    private static final String TAG = com.factrack.studentBottomNavigation.TeacherListFragmentStuOffline.class.getSimpleName();
 
     // TODO: Rename and change types of parameters
     private RecyclerView recyclerView;
@@ -72,7 +72,7 @@ public class TeacherListFragmentStu extends Fragment   {
     private String userId;
     //  private OnFragmentInteractionListener mListener;
 
-    public TeacherListFragmentStu() {
+    public TeacherListFragmentStuOffline() {
         // Required empty public constructor
     }
 
@@ -85,8 +85,8 @@ public class TeacherListFragmentStu extends Fragment   {
      * @return A new instance of fragment TeacherListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static com.factrack.studentBottomNavigation.TeacherListFragmentStu newInstance() {
-        com.factrack.studentBottomNavigation.TeacherListFragmentStu fragment = new com.factrack.studentBottomNavigation.TeacherListFragmentStu();
+    public static com.factrack.studentBottomNavigation.TeacherListFragmentStuOffline newInstance() {
+        com.factrack.studentBottomNavigation.TeacherListFragmentStuOffline fragment = new com.factrack.studentBottomNavigation.TeacherListFragmentStuOffline();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -129,7 +129,7 @@ public class TeacherListFragmentStu extends Fragment   {
             mEmptyView.setVisibility(View.GONE);
         }
     }
-    private void setCal(Calendar cal, int hour, int minute) {
+    private void setCal(Calendar cal,int hour,int minute) {
         cal.set(Calendar.HOUR_OF_DAY, hour);
         cal.set(Calendar.MINUTE, minute);
     }
@@ -167,13 +167,15 @@ public class TeacherListFragmentStu extends Fragment   {
                             setCal(start, slots.get(i).startHour, slots.get(i).startMinute);
                             setCal(end, slots.get(i).endHour, slots.get(i).endMinute);
 
-                            if (curr.after(start) && curr.before(end)) {
+                            if (curr.before(start) && curr.after(end)) {
                                 flag = true;
                                 break;
                             }
                         }
                     }
-
+                    else {
+                        flag = true;
+                    }
                     if(flag)
                         items.add(0,new TeacherData(teacher_info.name,teacher_info.imageLink,teacher_info.designation,teacher_info.building,teacher_info.roomNo,faculties.getKey()) );
                     //Log.e("name",teacher_info.imageLink);
