@@ -3,7 +3,6 @@ package com.factrack.teacherBottomNavigation;
 import android.net.Uri;
 import android.os.Bundle;
 import com.factrack.R;
-import com.factrack.teacherData.TeacherData;
 import com.factrack.teacherView.TeacherView;
 
 import android.support.annotation.NonNull;
@@ -52,7 +51,7 @@ public class TeacherBottomNav extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_bottom_nav);
         toolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        toolbar.setTitle("Home");
+        toolbar.setTitle("Your Profile");
         setSupportActionBar(toolbar);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

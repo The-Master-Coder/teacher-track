@@ -2,6 +2,7 @@ package com.factrack.teacherBottomNavigation;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,7 +23,10 @@ import android.widget.TextView;
 import com.factrack.R;
 import com.factrack.containers.teacherFormData;
 import com.factrack.recyclerView.TeacherAdapter;
+import com.factrack.recyclerView.teacherClickListener;
+import com.factrack.recyclerView.teacherTouchListener;
 import com.factrack.teacherData.TeacherData;
+import com.factrack.teacherView.TeacherProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -178,10 +182,30 @@ public class TeacherListFragment extends Fragment   {
         recyclerView.setAdapter(mAdapter);
         // TODO : add animation
         recyclerView.setNestedScrollingEnabled(false);
+        setUpRecyclerViewClick();
         fetchTeacherList();
         //recyclerViewEmpty();
     }
 
+    void setUpRecyclerViewClick() {
+
+        recyclerView.addOnItemTouchListener(new teacherTouchListener(getActivity(), recyclerView, new teacherClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                TeacherAdapter.MyViewHolder viewHolder = (TeacherAdapter.MyViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
+                TeacherData clickedTeacher = teacherList.get(position);
+                Intent intent = new Intent(getActivity(), TeacherProfileActivity.class);
+                intent.putExtra("uid",clickedTeacher.getUid());
+                startActivity(intent);
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+    }
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
