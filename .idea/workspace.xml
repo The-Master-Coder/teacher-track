@@ -16,22 +16,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/factrack/containers/teacherFormData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/factrack/containers/teacherFormData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/Recycler_View_Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/Recycler_View_Adapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/View_Holder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/View_Holder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/getSchedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/getSchedule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/teacherForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/teacherForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_schedule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_schedule.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_form.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_form.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycler_row_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_row_layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teacher-track.iml" beforeDir="false" afterPath="$PROJECT_DIR$/teacher-track.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,31 +49,31 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="6" />
-          <entry key="java" value="32" />
+          <entry key="java" value="33" />
           <entry key="png" value="1" />
-          <entry key="xml" value="36" />
+          <entry key="xml" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Groovy" value="6" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="32" />
-          <entry key="XML" value="36" />
+          <entry key="JAVA" value="33" />
+          <entry key="XML" value="37" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gradle" value="6" />
-          <entry key="java" value="1434" />
-          <entry key="xml" value="631" />
+          <entry key="java" value="1451" />
+          <entry key="xml" value="639" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="6" />
-          <entry key="JAVA" value="1434" />
-          <entry key="XML" value="631" />
+          <entry key="JAVA" value="1451" />
+          <entry key="XML" value="639" />
         </counts>
       </usages-collector>
     </session>
@@ -97,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_form.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="98" column="46" lean-forward="true" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
+              <caret line="98" column="46" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
@@ -118,17 +105,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/forms/Recycler_View_Adapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="380">
+              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+              <folding>
+                <element signature="e#867#885#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/forms/teacherForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="220" column="19" selection-start-line="220" selection-start-column="19" selection-end-line="220" selection-end-column="19" />
+            <state relative-caret-position="130">
+              <caret line="58" column="76" lean-forward="true" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#9151#9162#0" expanded="true" />
@@ -170,31 +170,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/forms/addSchedule.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/containers/teacherFormData.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
-              <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_get_schedule.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/containers/Schedule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
+            <state relative-caret-position="135">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -217,6 +207,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>scheduleList</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -233,16 +228,16 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_get_schedule.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/scheduleData.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/getSchedule.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_schedule.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/recycler_row_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/View_Holder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/Recycler_View_Adapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/teacherForm.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_form.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/factrack/containers/teacherFormData.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/factrack/forms/teacherForm.java" />
       </list>
     </option>
   </component>
@@ -293,6 +288,13 @@
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="factrack" type="cbb59c9e:AndroidPsiDirectoryNode" />
               <item name="forms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teacher-track" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="factrack" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="login" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="teacher-track" type="1abcf292:AndroidViewProjectNode" />
@@ -378,7 +380,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="device.picker.selection" value="be049ae40604" />
+    <property name="device.picker.selection" value="S6L3Y18420008516" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="show.do.not.copy.http.proxy.settings.to.gradle" value="false" />
@@ -505,10 +507,10 @@
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.44331396" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.32756758" />
+      <window_info active="true" anchor="bottom" id="Logcat" order="1" visible="true" weight="0.32756758" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32948717" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32972974" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.32864866" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32864866" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.32972974" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.24432433" />
@@ -521,32 +523,6 @@
       <window_info anchor="right" id="Preview" order="4" weight="0.30473536" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" weight="0.67542857" />
-      <window_info id="Structure" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Build Variants" order="4" side_tool="true" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Designer" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.44331396" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.32756758" />
-      <window_info anchor="bottom" id="TODO" order="2" weight="0.32948717" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.32972974" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.32864866" />
-      <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="6" weight="0.32972974" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.24432433" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" />
-      <window_info anchor="bottom" id="Find" order="9" />
-      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
-      <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="right" id="Gradle" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.30473536" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -646,14 +622,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/recyclerView/TeacherAdapter.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/forms/scheduleData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -699,25 +667,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/forms/Recycler_View_Adapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recycler_row_layout.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_teacher_form.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
-          <caret line="98" column="46" lean-forward="true" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
+          <caret line="98" column="46" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
@@ -732,10 +685,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/forms/Recycler_View_Adapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding>
+            <element signature="e#867#885#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/containers/teacherFormData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/containers/Schedule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/recycler_row_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="40" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/forms/teacherForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="220" column="19" selection-start-line="220" selection-start-column="19" selection-end-line="220" selection-end-column="19" />
+        <state relative-caret-position="130">
+          <caret line="58" column="76" lean-forward="true" selection-start-line="58" selection-start-column="76" selection-end-line="58" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#9151#9162#0" expanded="true" />
@@ -753,13 +746,6 @@
             <element signature="e#27733#27734#0" expanded="true" />
             <element signature="e#24971#24986#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/factrack/containers/teacherFormData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
         </state>
       </provider>
     </entry>
