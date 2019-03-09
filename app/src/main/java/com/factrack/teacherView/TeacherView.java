@@ -48,7 +48,7 @@ public class TeacherView extends Fragment {
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference root = FirebaseDatabase.getInstance().getReference(), faculty;
     private String userId;
-
+    private Schedule teacherSchedule;
     public TeacherView() {
 
     }
@@ -87,10 +87,18 @@ public class TeacherView extends Fragment {
         monday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> monday_slots = teacherSchedule.schedules.get("monday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(monday_slots != null) {
+                    for (int i = 0; i < monday_slots.size(); i++) {
+                        String startTime = Integer.toString(monday_slots.get(i).startHour) + ":" + Integer.toString(monday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(monday_slots.get(i).endHour) + ":" + Integer.toString(monday_slots.get(i).endMinute);
+                        String roomNo = monday_slots.get(i).roomNo;
+                        String building = monday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime + "\t\t" + roomNo + " " + building;
+                        mcategories.add(slot);
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -107,10 +115,18 @@ public class TeacherView extends Fragment {
         tuesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> tuesday_slots = teacherSchedule.schedules.get("tuesday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(tuesday_slots != null) {
+                    for (int i = 0; i < tuesday_slots.size(); i++) {
+                        String startTime = Integer.toString(tuesday_slots.get(i).startHour) + ":" + Integer.toString(tuesday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(tuesday_slots.get(i).endHour) + ":" + Integer.toString(tuesday_slots.get(i).endMinute);
+                        String roomNo = tuesday_slots.get(i).roomNo;
+                        String building = tuesday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime + "\t\t" + roomNo + " " + building;
+                        mcategories.add(slot);
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -127,10 +143,18 @@ public class TeacherView extends Fragment {
         wednesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> wednesday_slots = teacherSchedule.schedules.get("wednesday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(wednesday_slots != null) {
+                    for (int i = 0; i < wednesday_slots.size(); i++) {
+                        String startTime = Integer.toString(wednesday_slots.get(i).startHour) + ":" + Integer.toString(wednesday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(wednesday_slots.get(i).endHour) + ":" + Integer.toString(wednesday_slots.get(i).endMinute);
+                        String roomNo = wednesday_slots.get(i).roomNo;
+                        String building = wednesday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime + "\t\t" + roomNo + " " + building;
+                        mcategories.add(slot);
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -147,10 +171,19 @@ public class TeacherView extends Fragment {
         thursday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> thursday_slots = teacherSchedule.schedules.get("thursday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(thursday_slots != null) {
+                    for(int i=0; i<thursday_slots.size(); i++) {
+                        String startTime = Integer.toString(thursday_slots.get(i).startHour) + ":" + Integer.toString(thursday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(thursday_slots.get(i).endHour) + ":" + Integer.toString(thursday_slots.get(i).endMinute);
+                        String roomNo = thursday_slots.get(i).roomNo;
+                        String building = thursday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime +"\t\t" + roomNo + " "+ building;
+                        mcategories.add(slot);
+
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -167,10 +200,18 @@ public class TeacherView extends Fragment {
         friday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> friday_slots = teacherSchedule.schedules.get("friday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(friday_slots != null) {
+                    for (int i = 0; i < friday_slots.size(); i++) {
+                        String startTime = Integer.toString(friday_slots.get(i).startHour) + ":" + Integer.toString(friday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(friday_slots.get(i).endHour) + ":" + Integer.toString(friday_slots.get(i).endMinute);
+                        String roomNo = friday_slots.get(i).roomNo;
+                        String building = friday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime + "\t\t" + roomNo + " " + building;
+                        mcategories.add(slot);
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
@@ -225,7 +266,7 @@ public class TeacherView extends Fragment {
                 mobile.setText(teacher_info.mobileNo);
                 email.setText(teacher_info.email);
                 homepage.setText(teacher_info.homepage);
-
+                teacherSchedule = teacher_info.schedule;
                 Glide.with(context)
                         .load(teacher_info.imageLink)
                         .apply(RequestOptions.circleCropTransform())
