@@ -57,6 +57,10 @@
             android:label="@string/title_activity_teacher_bottom_nav"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
+            android:name=".studentBottomNavigation.StudentBottomNav"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".teacherView.TeacherProfileActivity"
             android:label="@string/title_activity_teacher_bottom_nav"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

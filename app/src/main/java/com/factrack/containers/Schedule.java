@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Schedule {
-    Map<String, List<Slot>> schedules = new HashMap<String, List<Slot>>();
+    public Map<String, List<Slot>> schedules = new HashMap<String, List<Slot>>();
 
     public Schedule() {
 
