@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.factrack.R;
 import com.factrack.containers.studentFormData;
 import com.factrack.containers.teacherFormData;
+import com.factrack.login.LoginActivity;
+import com.factrack.studentBottomNavigation.StudentBottomNav;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -194,6 +196,8 @@ public class studentForm extends AppCompatActivity {
                                     student.child(userId).setValue(student_info);
 
                                     Toast.makeText(studentForm.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(studentForm.this, StudentBottomNav.class));
+                                    finish();
                                 }
                             });
                         }

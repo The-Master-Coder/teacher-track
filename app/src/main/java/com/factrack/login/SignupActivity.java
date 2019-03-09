@@ -9,15 +9,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.factrack.R;
+import com.factrack.forms.studentForm;
 import com.factrack.forms.teacherForm;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -25,6 +30,9 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    private String userId;
+    DatabaseReference root;
+    String userType="faculty";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,7 @@ public class SignupActivity extends AppCompatActivity {
         //Get Firebase auth instance
         FirebaseApp.initializeApp(SignupActivity.this);
         auth = FirebaseAuth.getInstance();
+
 
         btnSignIn = (Button) findViewById(R.id.sign_in_button);
         btnSignUp = (Button) findViewById(R.id.sign_up_button);
@@ -56,6 +65,24 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        RadioGroup rg = findViewById(R.id.radio_group);
+
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId){
+                    case R.id.faculty:
+                        userType = "faculty"; // do operations specific to this selection
+                        break;
+                    case R.id.student:
+                        userType = "student";// do operations specific to this selection
+                        break;
+                }
+            }
+        });
+
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +121,18 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(SignupActivity.this, teacherForm.class));
+
+                                    FirebaseUser user = auth.getCurrentUser();
+                                    userId = user.getUid();
+                                    root = FirebaseDatabase.getInstance().getReference();
+
+                                    root.child("user").child(userId).setValue(userType);
+
+
+                                    if(userType.equals("faculty"))
+                                        startActivity(new Intent(SignupActivity.this, teacherForm.class));
+                                    else
+                                        startActivity(new Intent(SignupActivity.this, studentForm.class));
                                     finish();
                                 }
                             }
