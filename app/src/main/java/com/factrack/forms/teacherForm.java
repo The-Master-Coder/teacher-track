@@ -31,6 +31,7 @@ import com.factrack.containers.Schedule;
 import com.factrack.containers.Slot;
 import com.factrack.containers.teacherFormData;
 import com.factrack.login.SignupActivity;
+import com.factrack.teacherBottomNavigation.TeacherBottomNav;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -199,7 +200,7 @@ public class teacherForm extends AppCompatActivity {
                 scheduleObj.schedules.put("thursday", l4);
                 scheduleObj.schedules.put("friday", l5);
                 saveData();
-                startActivity(new Intent(teacherForm.this, teacherForm.class));
+                startActivity(new Intent(teacherForm.this, TeacherBottomNav.class));
                 finish();
             }
         });
@@ -730,13 +731,9 @@ public class teacherForm extends AppCompatActivity {
         final String teacher_imageLink = "hardcoded_image_link";
         final Schedule teacher_schedule = scheduleObj;
 
-<<<<<<< HEAD
-        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, Building, teacher_roomNo, teacher_homepage, teacher_imageLink, teacher_schedule);
-=======
         teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation,
                 teacher_department, teacher_mobileNo, teacher_officeNo, Building,
                 teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleObj);
->>>>>>> a8ec446bdd62010d9f57600879e9023e10f8ef9d
         root = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
