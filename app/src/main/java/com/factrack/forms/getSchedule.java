@@ -40,7 +40,6 @@ public class getSchedule extends AppCompatActivity {
 
 
 
-
         android.support.design.widget.FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -55,6 +54,7 @@ public class getSchedule extends AppCompatActivity {
 
 
     }
+
 
     public void MyAlertDialog (View view) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -132,6 +132,7 @@ public class getSchedule extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         // sign in the user ...
                         RoomNo = roomNo.getText().toString().trim();
+
 
                     }
                 });

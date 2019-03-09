@@ -33,7 +33,6 @@ public class Recycler_View_Adapter extends RecyclerView.Adapter<View_Holder> {
     public void onBindViewHolder(View_Holder holder, int position) {
 
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
-        holder.day.setText("Day: "+ list.get(position).day);
         holder.startTime.setText("Start Time: "+list.get(position).startHour + ":"+list.get(position).startMinute);
         holder.endTime.setText("End Time: "+list.get(position).endHour + ":"+list.get(position).endMinute);
         holder.building.setText("Topic: "+list.get(position).building);

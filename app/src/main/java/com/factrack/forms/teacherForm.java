@@ -1,21 +1,29 @@
 package com.factrack.forms;
 
 import android.app.Activity;
+import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.factrack.R;
@@ -32,20 +40,37 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 public class teacherForm extends AppCompatActivity {
 
+    private EditText roomNo;
+    private Spinner building;
+    private Button btnStartTime, btnEndTime;
+
+    int startHour, startMinute, endHour, endMinute;
+    private String Day, Building, RoomNo;
+
     DatabaseReference root, faculty;
     private String userId;
-    private EditText name, email, designation, address, mobileNo, officeNo, homepage;
-    private Button btnUpload, btnGetSchedule;
+    private EditText name, email, designation, mobileNo, officeNo, homepage;
+    private Button btnUpload;
+    private ImageButton plusButton1, plusButton2, plusButton3, plusButton4, plusButton5;
     private Spinner department;
     private static final int CAMERA_REQUEST = 1888;
     private static final int GALLERY_REQUEST = 2;
     private String Department;
+    private ArrayList<scheduleData> scheduleList;
     String generatedFilePath;
     Bitmap photo;
     Uri selectedImage;
+
+    private RecyclerView recyclerView1,recyclerView2,recyclerView3,recyclerView4,recyclerView5;
+    private Recycler_View_Adapter mAdapter1,mAdapter2,mAdapter3,mAdapter4,mAdapter5;
+    public List<scheduleData> list1,list2,list3,list4,list5;
+
 
     FirebaseStorage storage;
     StorageReference storageReference;
@@ -59,16 +84,76 @@ public class teacherForm extends AppCompatActivity {
         email = findViewById(R.id.email);
         designation = findViewById(R.id.designation);
         department = findViewById(R.id.department);
-        address = findViewById(R.id.address);
+        roomNo = findViewById(R.id.roomNo);
+        building = findViewById(R.id.building);
         mobileNo = findViewById(R.id.mobileNo);
         officeNo =  findViewById(R.id.officeNo);
         homepage = findViewById(R.id.homepage);
 
-        btnUpload = findViewById(R.id.uploadImage);
-        btnGetSchedule = findViewById(R.id.getSchedule);
+        plusButton1 = findViewById(R.id.plusButton1);
+        plusButton2 = findViewById(R.id.plusButton2);
+        plusButton3 = findViewById(R.id.plusButton3);
+        plusButton4 = findViewById(R.id.plusButton4);
+        plusButton5 = findViewById(R.id.plusButton5);
 
+        btnUpload = findViewById(R.id.uploadImage);
+        //btnGetSchedule = findViewById(R.id.getSchedule);
+
+
+        plusButton1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                //Intent intent = new Intent( getSchedule.this, DialogActivity.class);
+                //startActivity(intent);
+                MyAlertDialog1(view);
+            }
+        });
+
+        plusButton2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                //Intent intent = new Intent( getSchedule.this, DialogActivity.class);
+                //startActivity(intent);
+                MyAlertDialog2(view);
+            }
+        });
+
+        plusButton3.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                //Intent intent = new Intent( getSchedule.this, DialogActivity.class);
+                //startActivity(intent);
+                MyAlertDialog3(view);
+            }
+        });
+
+        plusButton4.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                //Intent intent = new Intent( getSchedule.this, DialogActivity.class);
+                //startActivity(intent);
+                MyAlertDialog4(view);
+            }
+        });
+
+        plusButton5.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                //Intent intent = new Intent( getSchedule.this, DialogActivity.class);
+                //startActivity(intent);
+                MyAlertDialog5(view);
+            }
+        });
 
         //department.setOnItemSelectedListener(new addScheduleItemSelectedListener());
+
+        building.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // Your code here
+
+                Building = String.valueOf(building.getSelectedItem());
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Building = "Not selected";
+                return;
+            }
+        });
 
         department.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -83,15 +168,496 @@ public class teacherForm extends AppCompatActivity {
             }
         });
 
+        setUpRecyclerViews();
 
-        btnGetSchedule.setOnClickListener(new View.OnClickListener() {
+    }
+    public void setUpRecyclerViews() {
+        recyclerView1 = findViewById(R.id.recyclerview1);
+        list1 = new ArrayList<>();
+        mAdapter1 = new Recycler_View_Adapter(list1, getApplication());
+        recyclerView1.setAdapter(mAdapter1);
+        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView2 = findViewById(R.id.recyclerview2);
+        list2 = new ArrayList<>();
+        mAdapter2 = new Recycler_View_Adapter(list2, getApplication());
+        recyclerView2.setAdapter(mAdapter2);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView3 = findViewById(R.id.recyclerview3);
+        list3 = new ArrayList<>();
+        mAdapter3 = new Recycler_View_Adapter(list3, getApplication());
+        recyclerView3.setAdapter(mAdapter3);
+        recyclerView3.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView4 = findViewById(R.id.recyclerview4);
+        list4 = new ArrayList<>();
+        mAdapter4 = new Recycler_View_Adapter(list4, getApplication());
+        recyclerView4.setAdapter(mAdapter4);
+        recyclerView4.setLayoutManager(new LinearLayoutManager(this));
+
+        recyclerView5 = findViewById(R.id.recyclerview5);
+        list5 = new ArrayList<>();
+        mAdapter5 = new Recycler_View_Adapter(list5, getApplication());
+        recyclerView5.setAdapter(mAdapter5);
+        recyclerView5.setLayoutManager(new LinearLayoutManager(this));
+    }
+    public void MyAlertDialog1 (View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.activity_add_schedule, null);
+        builder.setView(dialogView);
+
+        btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
+        btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
+        building = (Spinner)dialogView.findViewById(R.id.building);
+        roomNo = (EditText)findViewById(R.id.roomNo);
+
+        btnStartTime.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(teacherForm.this, getSchedule.class));
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+
+                //Toast.makeText(getApplicationContext(), "STRING MESSAGE", Toast.LENGTH_LONG).show();
+
+                startHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                startMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnStartTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, startHour, startMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
             }
         });
 
+        btnEndTime.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                endHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                endMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnEndTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, endHour, endMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        building.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // Your code here
+                Building = String.valueOf(building.getSelectedItem());
+
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Building = "Not seleceted";
+                return;
+            }
+        });
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // sign in the user ...
+                RoomNo = roomNo.getText().toString().trim();
+                scheduleData scheduleDataObj = new scheduleData("Monday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
+                mAdapter1.insert(0,scheduleDataObj);
+
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //LoginDialogFragment.this.getDialog().cancel();
+                //this.finish();
+            }
+        });
+        AlertDialog b = builder.create();
+        b.show();
+    }
+
+    public void MyAlertDialog2 (View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.activity_add_schedule, null);
+        builder.setView(dialogView);
+
+        btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
+        btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
+        building = (Spinner)dialogView.findViewById(R.id.building);
+        roomNo = (EditText)findViewById(R.id.roomNo);
+
+        btnStartTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+
+                Toast.makeText(getApplicationContext(), "STRING MESSAGE", Toast.LENGTH_LONG).show();
+
+                startHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                startMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnStartTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, startHour, startMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        btnEndTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                endHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                endMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnEndTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, endHour, endMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        building.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // Your code here
+                Building = String.valueOf(building.getSelectedItem());
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Building = "Not seleceted";
+                return;
+            }
+        });
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // sign in the user ...
+                RoomNo = roomNo.getText().toString().trim();
+                scheduleData scheduleDataObj = new scheduleData("Tuesday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
+                mAdapter2.insert(0,scheduleDataObj);
+
+
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //LoginDialogFragment.this.getDialog().cancel();
+                //this.finish();
+            }
+        });
+        AlertDialog b = builder.create();
+        b.show();
+    }
+
+    public void MyAlertDialog3 (View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.activity_add_schedule, null);
+        builder.setView(dialogView);
+
+        btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
+        btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
+        building = (Spinner)dialogView.findViewById(R.id.building);
+        roomNo = (EditText)findViewById(R.id.roomNo);
+
+        btnStartTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+
+                Toast.makeText(getApplicationContext(), "STRING MESSAGE", Toast.LENGTH_LONG).show();
+
+                startHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                startMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnStartTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, startHour, startMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        btnEndTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                endHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                endMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnEndTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, endHour, endMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        building.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // Your code here
+                Building = String.valueOf(building.getSelectedItem());
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Building = "Not seleceted";
+                return;
+            }
+        });
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // sign in the user ...
+                RoomNo = roomNo.getText().toString().trim();
+                scheduleData scheduleDataObj = new scheduleData("Wednesday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
+                mAdapter3.insert(0,scheduleDataObj);
+
+
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //LoginDialogFragment.this.getDialog().cancel();
+                //this.finish();
+            }
+        });
+        AlertDialog b = builder.create();
+        b.show();
+    }
+
+    public void MyAlertDialog4 (View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.activity_add_schedule, null);
+        builder.setView(dialogView);
+
+        btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
+        btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
+        building = (Spinner)dialogView.findViewById(R.id.building);
+        roomNo = (EditText)findViewById(R.id.roomNo);
+
+        btnStartTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+
+                Toast.makeText(getApplicationContext(), "STRING MESSAGE", Toast.LENGTH_LONG).show();
+
+                startHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                startMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnStartTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, startHour, startMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        btnEndTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                endHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                endMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnEndTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, endHour, endMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        building.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // Your code here
+                Building = String.valueOf(building.getSelectedItem());
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Building = "Not seleceted";
+                return;
+            }
+        });
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // sign in the user ...
+                RoomNo = roomNo.getText().toString().trim();
+                scheduleData scheduleDataObj = new scheduleData("Thursday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
+                mAdapter4.insert(0,scheduleDataObj);
+
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //LoginDialogFragment.this.getDialog().cancel();
+                //this.finish();
+            }
+        });
+        AlertDialog b = builder.create();
+        b.show();
+    }
+
+    public void MyAlertDialog5 (View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = this.getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.activity_add_schedule, null);
+        builder.setView(dialogView);
+
+        btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
+        btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
+        building = (Spinner)dialogView.findViewById(R.id.building);
+        roomNo = (EditText)findViewById(R.id.roomNo);
+
+        btnStartTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+
+                Toast.makeText(getApplicationContext(), "STRING MESSAGE", Toast.LENGTH_LONG).show();
+
+                startHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                startMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnStartTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, startHour, startMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        btnEndTime.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                Calendar mcurrentTime = Calendar.getInstance();
+                endHour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                endMinute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        btnEndTime.setText( selectedHour + ":" + selectedMinute);
+                    }
+                }, endHour, endMinute, true);//Yes 24 hour time
+                mTimePicker.setTitle("Select Time");
+                mTimePicker.show();
+
+            }
+        });
+
+        building.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                // Your code here
+                Building = String.valueOf(building.getSelectedItem());
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                Building = "Not seleceted";
+                return;
+            }
+        });
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // sign in the user ...
+                RoomNo = roomNo.getText().toString().trim();
+                scheduleData scheduleDataObj = new scheduleData("Friday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
+                mAdapter5.insert(0,scheduleDataObj);
+
+            }
+        });
+        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //LoginDialogFragment.this.getDialog().cancel();
+                //this.finish();
+            }
+        });
+        AlertDialog b = builder.create();
+        b.show();
     }
 
     public void saveData() {
@@ -99,15 +665,13 @@ public class teacherForm extends AppCompatActivity {
         final String teacher_email = email.getText().toString().trim();
         final String teacher_department = String.valueOf(department.getSelectedItem());
         final String teacher_designation = designation.getText().toString().trim();
-        final String teacher_address = address.getText().toString().trim();
+        final String teacher_roomNo = roomNo.getText().toString().trim();
         final String teacher_mobileNo = mobileNo.getText().toString().trim();
         final String teacher_officeNo = officeNo.getText().toString().trim();
         final String teacher_homepage = homepage.getText().toString().trim();
-        final String teacher_imageLink = "";
+        final String teacher_imageLink = uploadImage();
 
-        uploadImage();
-
-        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, teacher_address, teacher_homepage, teacher_imageLink);
+        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, Building, teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleList);
         root = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
