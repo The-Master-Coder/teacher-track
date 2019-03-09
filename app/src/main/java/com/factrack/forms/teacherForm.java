@@ -730,7 +730,13 @@ public class teacherForm extends AppCompatActivity {
         final String teacher_imageLink = "hardcoded_image_link";
         final Schedule teacher_schedule = scheduleObj;
 
+<<<<<<< HEAD
         teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, Building, teacher_roomNo, teacher_homepage, teacher_imageLink, teacher_schedule);
+=======
+        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation,
+                teacher_department, teacher_mobileNo, teacher_officeNo, Building,
+                teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleObj);
+>>>>>>> a8ec446bdd62010d9f57600879e9023e10f8ef9d
         root = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();

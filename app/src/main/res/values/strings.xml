@@ -109,6 +109,19 @@
 
     </string-array>
 
+    <string-array name="hostels">
+        <item>BH-1</item>
+        <item>BH-2</item>
+        <item>BH-3</item>
+        <item>BH-4</item>
+        <item>BH-5</item>
+        <item>GH-1</item>
+        <item>GH-2</item>
+        <item>GH-3</item>
+        <item>RSA</item>
+
+    </string-array>
+
     <string-array name="days">
         <item>Monday</item>
         <item>Tuesday</item>
@@ -119,7 +132,6 @@
         <item>Sunday</item>
 
     </string-array>
-
 
 
 </resources>

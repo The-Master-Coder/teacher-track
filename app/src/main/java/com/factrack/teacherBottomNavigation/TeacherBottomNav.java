@@ -32,13 +32,13 @@ public class TeacherBottomNav extends AppCompatActivity {
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_dashboard:
-                    toolbar.setTitle(R.string.title_dashboard);
+                    toolbar.setTitle("Online Teachers");
                     fragment = new TeacherListFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:
-                    toolbar.setTitle(R.string.title_notifications);
-                    fragment = new TeacherListFragment();
+                    toolbar.setTitle("Offline Teachers");
+                    fragment = new TeacherListFragmentOffline();
                     loadFragment(fragment);
                     return true;
             }

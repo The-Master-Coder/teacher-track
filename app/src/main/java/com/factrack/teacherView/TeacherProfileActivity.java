@@ -16,6 +16,8 @@ import java.util.List;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.factrack.R;
+import com.factrack.containers.Schedule;
+import com.factrack.containers.Slot;
 import com.factrack.containers.teacherFormData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,7 +34,7 @@ public class TeacherProfileActivity extends AppCompatActivity {
     Button monday, tuesday, wednesday, thursday, friday;
     TextView name,designation,address,phone,mobile,email,homepage;
     CircleImageView image;
-
+    private Schedule teacherSchedule;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -60,10 +62,18 @@ public class TeacherProfileActivity extends AppCompatActivity {
         monday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> monday_slots = teacherSchedule.schedules.get("monday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(monday_slots != null) {
+                    for(int i=0; i<monday_slots.size(); i++) {
+                        String startTime = Integer.toString(monday_slots.get(i).startHour) + ":" + Integer.toString(monday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(monday_slots.get(i).endHour) + ":" + Integer.toString(monday_slots.get(i).endMinute);
+                        String roomNo = monday_slots.get(i).roomNo;
+                        String building = monday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime +"\t\t" + roomNo + " "+ building;
+                        mcategories.add(slot);
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(TeacherProfileActivity.this);
@@ -80,10 +90,18 @@ public class TeacherProfileActivity extends AppCompatActivity {
         tuesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> tuesday_slots = teacherSchedule.schedules.get("tuesday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(tuesday_slots != null) {
+                    for (int i = 0; i < tuesday_slots.size(); i++) {
+                        String startTime = Integer.toString(tuesday_slots.get(i).startHour) + ":" + Integer.toString(tuesday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(tuesday_slots.get(i).endHour) + ":" + Integer.toString(tuesday_slots.get(i).endMinute);
+                        String roomNo = tuesday_slots.get(i).roomNo;
+                        String building = tuesday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime + "\t\t" + roomNo + " " + building;
+                        mcategories.add(slot);
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(TeacherProfileActivity.this);
@@ -100,10 +118,18 @@ public class TeacherProfileActivity extends AppCompatActivity {
         wednesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> wednesday_slots = teacherSchedule.schedules.get("wednesday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(wednesday_slots != null) {
+                    for (int i = 0; i < wednesday_slots.size(); i++) {
+                        String startTime = Integer.toString(wednesday_slots.get(i).startHour) + ":" + Integer.toString(wednesday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(wednesday_slots.get(i).endHour) + ":" + Integer.toString(wednesday_slots.get(i).endMinute);
+                        String roomNo = wednesday_slots.get(i).roomNo;
+                        String building = wednesday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime + "\t\t" + roomNo + " " + building;
+                        mcategories.add(slot);
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(TeacherProfileActivity.this);
@@ -120,10 +146,19 @@ public class TeacherProfileActivity extends AppCompatActivity {
         thursday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> thursday_slots = teacherSchedule.schedules.get("thursday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(thursday_slots != null) {
+                    for(int i=0; i<thursday_slots.size(); i++) {
+                        String startTime = Integer.toString(thursday_slots.get(i).startHour) + ":" + Integer.toString(thursday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(thursday_slots.get(i).endHour) + ":" + Integer.toString(thursday_slots.get(i).endMinute);
+                        String roomNo = thursday_slots.get(i).roomNo;
+                        String building = thursday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime +"\t\t" + roomNo + " "+ building;
+                        mcategories.add(slot);
+
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(TeacherProfileActivity.this);
@@ -140,10 +175,18 @@ public class TeacherProfileActivity extends AppCompatActivity {
         friday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Slot> friday_slots = teacherSchedule.schedules.get("friday");
                 List<String> mcategories = new ArrayList<String>();
-                mcategories.add("9:00 AM - 11:00 AM\t\t5207 CC3");
-                mcategories.add("12:00 AM - 1:00 PM\t\t5005 CC3");
-                mcategories.add("4:00 PM - 6:00 PM\t\t5054 CC3");
+                if(friday_slots != null) {
+                    for (int i = 0; i < friday_slots.size(); i++) {
+                        String startTime = Integer.toString(friday_slots.get(i).startHour) + ":" + Integer.toString(friday_slots.get(i).startMinute);
+                        String endTime = Integer.toString(friday_slots.get(i).endHour) + ":" + Integer.toString(friday_slots.get(i).endMinute);
+                        String roomNo = friday_slots.get(i).roomNo;
+                        String building = friday_slots.get(i).building;
+                        String slot = startTime + " - " + endTime + "\t\t" + roomNo + " " + building;
+                        mcategories.add(slot);
+                    }
+                }
                 //Create sequence of items
                 final CharSequence[] Categories = mcategories.toArray(new String[mcategories.size()]);
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(TeacherProfileActivity.this);
@@ -170,7 +213,7 @@ public class TeacherProfileActivity extends AppCompatActivity {
                 mobile.setText(teacher_info.mobileNo);
                 email.setText(teacher_info.email);
                 homepage.setText(teacher_info.homepage);
-
+                teacherSchedule = teacher_info.schedule;
                 Glide.with(TeacherProfileActivity.this)
                         .load(teacher_info.imageLink)
                         .apply(RequestOptions.circleCropTransform())

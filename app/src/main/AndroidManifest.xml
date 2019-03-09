@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".forms.studentForm"></activity>
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/app_name">
@@ -55,13 +55,15 @@
         <activity
             android:name=".teacherBottomNavigation.TeacherBottomNav"
             android:label="@string/title_activity_teacher_bottom_nav"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            ></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".studentBottomNavigation.StudentBottomNav"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".teacherView.TeacherProfileActivity"
             android:label="@string/title_activity_teacher_bottom_nav"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            ></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
 </manifest>
