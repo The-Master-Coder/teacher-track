@@ -16,9 +16,9 @@ public class View_Holder extends RecyclerView.ViewHolder{
         super(itemView);
         cv = (CardView) itemView.findViewById(R.id.cardView);
 
-        startTime = (TextView) itemView.findViewById(R.id.startTime);
-        endTime = (TextView) itemView.findViewById(R.id.endTime);
-        building= (TextView) itemView.findViewById(R.id.building);
-        roomNo = (TextView) itemView.findViewById(R.id.roomNo);
+        startTime =  itemView.findViewById(R.id.startTime);
+        endTime =  itemView.findViewById(R.id.endTime);
+        building =  itemView.findViewById(R.id.building);
+        roomNo =  itemView.findViewById(R.id.roomNo);
     }
 }

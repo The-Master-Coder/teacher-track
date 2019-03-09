@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.factrack.R;
 
@@ -33,10 +34,12 @@ public class Recycler_View_Adapter extends RecyclerView.Adapter<View_Holder> {
     public void onBindViewHolder(View_Holder holder, int position) {
 
         //Use the provided View Holder on the onCreateViewHolder method to populate the current row on the RecyclerView
-        holder.startTime.setText("Start Time: "+list.get(position).startHour + ":"+list.get(position).startMinute);
-        holder.endTime.setText("End Time: "+list.get(position).endHour + ":"+list.get(position).endMinute);
-        holder.building.setText("Topic: "+list.get(position).building);
-        holder.roomNo.setText("Topic: "+list.get(position).roomNo);
+        holder.startTime.setText(list.get(position).startHour + ":"+list.get(position).startMinute);
+        holder.endTime.setText(list.get(position).endHour + ":"+list.get(position).endMinute);
+        holder.building.setText(list.get(position).building);
+        //String RoomNo = ;
+        //String RoomNo = list.get(position).roomNo+"";
+        holder.roomNo.setText(list.get(position).roomNo);
 
         //holder.imageView.setImageResource(list.get(position).imageId);
 

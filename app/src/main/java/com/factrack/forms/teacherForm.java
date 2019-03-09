@@ -28,7 +28,9 @@ import android.widget.Toast;
 
 import com.factrack.R;
 import com.factrack.containers.Schedule;
+import com.factrack.containers.Slot;
 import com.factrack.containers.teacherFormData;
+import com.factrack.login.SignupActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,7 +45,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class teacherForm extends AppCompatActivity {
 
@@ -51,19 +55,23 @@ public class teacherForm extends AppCompatActivity {
     private Spinner building;
     private Button btnStartTime, btnEndTime;
 
-    int startHour, startMinute, endHour, endMinute;
-    private String Day, Building, RoomNo;
+    public int startHour, startMinute, endHour, endMinute;
+    public String Day, Building, RoomNo;
 
     DatabaseReference root, faculty;
     private String userId;
     private EditText name, email, designation, mobileNo, officeNo, homepage;
-    private Button btnUpload;
+    private Button btnUpload, submitButton;
     private ImageButton plusButton1, plusButton2, plusButton3, plusButton4, plusButton5;
     private Spinner department;
     private static final int CAMERA_REQUEST = 1888;
     private static final int GALLERY_REQUEST = 2;
     private String Department;
     private Schedule scheduleObj;
+
+
+    private teacherFormData teacherFormDataObj;
+
     String generatedFilePath;
     Bitmap photo;
     Uri selectedImage;
@@ -71,6 +79,8 @@ public class teacherForm extends AppCompatActivity {
     private RecyclerView recyclerView1,recyclerView2,recyclerView3,recyclerView4,recyclerView5;
     private Recycler_View_Adapter mAdapter1,mAdapter2,mAdapter3,mAdapter4,mAdapter5;
     public List<scheduleData> list1,list2,list3,list4,list5;
+
+    private List<Slot> l1, l2, l3, l4, l5;
 
 
     FirebaseStorage storage;
@@ -81,6 +91,13 @@ public class teacherForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_form);
 
+        l1 = new ArrayList<Slot>();
+        l2 = new ArrayList<Slot>();
+        l3 = new ArrayList<Slot>();
+        l4 = new ArrayList<Slot>();
+        l4 = new ArrayList<Slot>();
+
+
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
         designation = findViewById(R.id.designation);
@@ -90,6 +107,7 @@ public class teacherForm extends AppCompatActivity {
         mobileNo = findViewById(R.id.mobileNo);
         officeNo =  findViewById(R.id.officeNo);
         homepage = findViewById(R.id.homepage);
+        submitButton = findViewById(R.id.submitButton);
 
         plusButton1 = findViewById(R.id.plusButton1);
         plusButton2 = findViewById(R.id.plusButton2);
@@ -171,6 +189,21 @@ public class teacherForm extends AppCompatActivity {
 
         setUpRecyclerViews();
 
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                scheduleObj = new Schedule();
+                scheduleObj.schedules.put("monday", l1);
+                scheduleObj.schedules.put("tuesday", l2);
+                scheduleObj.schedules.put("wednesday", l3);
+                scheduleObj.schedules.put("thursday", l4);
+                scheduleObj.schedules.put("friday", l5);
+                saveData();
+                startActivity(new Intent(teacherForm.this, teacherForm.class));
+                finish();
+            }
+        });
+
     }
     public void setUpRecyclerViews() {
         recyclerView1 = findViewById(R.id.recyclerview1);
@@ -213,7 +246,8 @@ public class teacherForm extends AppCompatActivity {
         btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
         btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
         building = (Spinner)dialogView.findViewById(R.id.building);
-        roomNo = (EditText)findViewById(R.id.roomNo);
+        roomNo = dialogView.findViewById(R.id.roomNo);
+
 
         btnStartTime.setOnClickListener(new View.OnClickListener() {
 
@@ -230,7 +264,9 @@ public class teacherForm extends AppCompatActivity {
                 mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        btnStartTime.setText( selectedHour + ":" + selectedMinute);
+                        btnStartTime.setText( selectedHour + ":" + String.format("%02d", selectedMinute));
+                        startHour = selectedHour;
+                        startMinute = selectedMinute;
                     }
                 }, startHour, startMinute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -251,7 +287,9 @@ public class teacherForm extends AppCompatActivity {
                 mTimePicker = new TimePickerDialog(teacherForm.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        btnEndTime.setText( selectedHour + ":" + selectedMinute);
+                        btnEndTime.setText( selectedHour + ":" + String.format("%02d", selectedMinute));
+                        endHour = selectedHour;
+                        endMinute = selectedMinute;
                     }
                 }, endHour, endMinute, true);//Yes 24 hour time
                 mTimePicker.setTitle("Select Time");
@@ -273,6 +311,7 @@ public class teacherForm extends AppCompatActivity {
             }
         });
 
+
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -280,8 +319,21 @@ public class teacherForm extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 // sign in the user ...
                 RoomNo = roomNo.getText().toString().trim();
+                //Toast.makeText(getApplicationContext(), startHour, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), startMinute, Toast.LENGTH_SHORT).show();
                 scheduleData scheduleDataObj = new scheduleData("Monday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
                 mAdapter1.insert(0,scheduleDataObj);
+                Slot s = new Slot(RoomNo, Building, startHour,startMinute, endHour, endMinute );
+                l1.add(s);
+
+//
+//        schedules.put("monday", Arrays.asList(s1, s2, s3));
+//
+//        Schedule s = new Schedule(schedules);
+//
+//        teacherFormData data = new teacherFormData("Ayush", "a@a.com", "one man army", "NA", "8687314230", "NA", "CC3", "251", "NA", "NA", s);
+//
+//        faculty.setValue(data);
 
             }
         });
@@ -305,7 +357,7 @@ public class teacherForm extends AppCompatActivity {
         btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
         btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
         building = (Spinner)dialogView.findViewById(R.id.building);
-        roomNo = (EditText)findViewById(R.id.roomNo);
+        roomNo = dialogView.findViewById(R.id.roomNo);
 
         btnStartTime.setOnClickListener(new View.OnClickListener() {
 
@@ -373,7 +425,8 @@ public class teacherForm extends AppCompatActivity {
                 RoomNo = roomNo.getText().toString().trim();
                 scheduleData scheduleDataObj = new scheduleData("Tuesday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
                 mAdapter2.insert(0,scheduleDataObj);
-
+                Slot s = new Slot(RoomNo, Building, startHour,startMinute, endHour, endMinute );
+                l2.add(s);
 
             }
         });
@@ -397,7 +450,7 @@ public class teacherForm extends AppCompatActivity {
         btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
         btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
         building = (Spinner)dialogView.findViewById(R.id.building);
-        roomNo = (EditText)findViewById(R.id.roomNo);
+        roomNo = dialogView.findViewById(R.id.roomNo);
 
         btnStartTime.setOnClickListener(new View.OnClickListener() {
 
@@ -465,7 +518,8 @@ public class teacherForm extends AppCompatActivity {
                 RoomNo = roomNo.getText().toString().trim();
                 scheduleData scheduleDataObj = new scheduleData("Wednesday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
                 mAdapter3.insert(0,scheduleDataObj);
-
+                Slot s = new Slot(RoomNo, Building, startHour,startMinute, endHour, endMinute );
+                l3.add(s);
 
             }
         });
@@ -489,7 +543,7 @@ public class teacherForm extends AppCompatActivity {
         btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
         btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
         building = (Spinner)dialogView.findViewById(R.id.building);
-        roomNo = (EditText)findViewById(R.id.roomNo);
+        roomNo = dialogView.findViewById(R.id.roomNo);
 
         btnStartTime.setOnClickListener(new View.OnClickListener() {
 
@@ -557,7 +611,8 @@ public class teacherForm extends AppCompatActivity {
                 RoomNo = roomNo.getText().toString().trim();
                 scheduleData scheduleDataObj = new scheduleData("Thursday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
                 mAdapter4.insert(0,scheduleDataObj);
-
+                Slot s = new Slot(RoomNo, Building, startHour,startMinute, endHour, endMinute );
+                l4.add(s);
             }
         });
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -580,7 +635,7 @@ public class teacherForm extends AppCompatActivity {
         btnStartTime = (Button)dialogView.findViewById(R.id.btnStartTime);
         btnEndTime = (Button)dialogView.findViewById(R.id.btnEndTime);
         building = (Spinner)dialogView.findViewById(R.id.building);
-        roomNo = (EditText)findViewById(R.id.roomNo);
+        roomNo = dialogView.findViewById(R.id.roomNo);
 
         btnStartTime.setOnClickListener(new View.OnClickListener() {
 
@@ -648,7 +703,8 @@ public class teacherForm extends AppCompatActivity {
                 RoomNo = roomNo.getText().toString().trim();
                 scheduleData scheduleDataObj = new scheduleData("Friday", Building, RoomNo, startHour, startMinute, endHour, endMinute);
                 mAdapter5.insert(0,scheduleDataObj);
-
+                Slot s = new Slot(RoomNo, Building, startHour,startMinute, endHour, endMinute );
+                l5.add(s);
             }
         });
         builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
@@ -670,9 +726,11 @@ public class teacherForm extends AppCompatActivity {
         final String teacher_mobileNo = mobileNo.getText().toString().trim();
         final String teacher_officeNo = officeNo.getText().toString().trim();
         final String teacher_homepage = homepage.getText().toString().trim();
-        final String teacher_imageLink = uploadImage();
+        //final String teacher_imageLink = uploadImage();
+        final String teacher_imageLink = "hardcoded_image_link";
+        final Schedule teacher_schedule = scheduleObj;
 
-        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, Building, teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleObj);
+        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, Building, teacher_roomNo, teacher_homepage, teacher_imageLink, teacher_schedule);
         root = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
