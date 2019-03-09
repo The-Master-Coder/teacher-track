@@ -1222,6 +1222,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fab
+id faculty
 id faculty_address
 id faculty_designation
 id faculty_email
@@ -1311,6 +1312,7 @@ id progressBar
 id progress_circular
 id progress_horizontal
 id radio
+id radio_group
 id recycler_view
 id recyclerview
 id recyclerview1
@@ -1372,6 +1374,7 @@ id start
 id startTime
 id status_bar_latest_event_content
 id stretch
+id student
 id student_email
 id student_hostel
 id student_image
@@ -1381,6 +1384,7 @@ id student_rollno
 id student_roomno
 id submenuarrow
 id submit
+id submitButton
 id submit_area
 id tabMode
 id tag_transition_group

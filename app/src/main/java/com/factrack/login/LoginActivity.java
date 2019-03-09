@@ -134,9 +134,27 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LoginActivity.this, TeacherBottomNav.class);
+
+                                    userId = auth.getCurrentUser().getUid();
+                                    root.child("user").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            userType = dataSnapshot.getValue(String.class);
+                                            if(userType.equals("faculty") )
+                                                startActivity(new Intent(LoginActivity.this, TeacherBottomNav.class));
+                                            else
+                                                startActivity(new Intent(LoginActivity.this, StudentBottomNav.class));
+                                            finish();
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+                                    /*Intent intent = new Intent(LoginActivity.this, TeacherBottomNav.class);
                                     startActivity(intent);
-                                    finish();
+                                    finish();*/
                                 }
                             }
                         });

@@ -29,8 +29,11 @@ import android.widget.Toast;
 import com.factrack.R;
 import com.factrack.containers.Schedule;
 import com.factrack.containers.Slot;
+import com.factrack.containers.studentFormData;
 import com.factrack.containers.teacherFormData;
 import com.factrack.login.SignupActivity;
+import com.factrack.studentBottomNavigation.StudentBottomNav;
+import com.factrack.teacherBottomNavigation.TeacherBottomNav;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,6 +62,7 @@ public class teacherForm extends AppCompatActivity {
     public String Day, Building, RoomNo;
 
     DatabaseReference root, faculty;
+    StorageReference ref;
     private String userId;
     private EditText name, email, designation, mobileNo, officeNo, homepage;
     private Button btnUpload, submitButton;
@@ -198,7 +202,8 @@ public class teacherForm extends AppCompatActivity {
                 scheduleObj.schedules.put("wednesday", l3);
                 scheduleObj.schedules.put("thursday", l4);
                 scheduleObj.schedules.put("friday", l5);
-                saveData();
+                //saveData();
+                uploadImage();
                 startActivity(new Intent(teacherForm.this, teacherForm.class));
                 finish();
             }
@@ -730,13 +735,13 @@ public class teacherForm extends AppCompatActivity {
         final String teacher_imageLink = "hardcoded_image_link";
         final Schedule teacher_schedule = scheduleObj;
 
-<<<<<<< HEAD
-        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, Building, teacher_roomNo, teacher_homepage, teacher_imageLink, teacher_schedule);
-=======
+
+
+
         teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation,
                 teacher_department, teacher_mobileNo, teacher_officeNo, Building,
                 teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleObj);
->>>>>>> a8ec446bdd62010d9f57600879e9023e10f8ef9d
+
         root = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
@@ -759,7 +764,70 @@ public class teacherForm extends AppCompatActivity {
         return Uri.parse(path);
     }
 
-    private String uploadImage() {
+
+    private void uploadImage() {
+
+
+        final String teacher_name = name.getText().toString().trim();
+        final String teacher_email = email.getText().toString().trim();
+        final String teacher_department = String.valueOf(department.getSelectedItem());
+        final String teacher_designation = designation.getText().toString().trim();
+        final String teacher_roomNo = roomNo.getText().toString().trim();
+        final String teacher_mobileNo = mobileNo.getText().toString().trim();
+        final String teacher_officeNo = officeNo.getText().toString().trim();
+        final String teacher_homepage = homepage.getText().toString().trim();
+        final Schedule teacher_schedule = scheduleObj;
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
+
+        if(selectedImage != null)
+        {
+            ref = storageReference.child("faculty").child(userId);
+
+            ref.putFile(selectedImage)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    // getting image uri and converting into string
+                                    Uri downloadUrl = uri;
+                                    generatedFilePath = downloadUrl.toString();
+
+                                    final String teacher_imageLink = generatedFilePath;
+
+                                    teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation,
+                                            teacher_department, teacher_mobileNo, teacher_officeNo, Building,
+                                            teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleObj);
+                                    root = FirebaseDatabase.getInstance().getReference();
+
+                                    faculty = root.child("faculty");
+                                    faculty.child(userId).setValue(teacher_info);
+
+                                    Toast.makeText(teacherForm.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(teacherForm.this, TeacherBottomNav.class));
+                                    finish();
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //progressDialog.dismiss();
+                            Toast.makeText(teacherForm.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+        } else {
+            Toast.makeText(this, "SelectedImage is null", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    /*private String uploadImage() {
 
 
         if(selectedImage != null)
@@ -790,7 +858,7 @@ public class teacherForm extends AppCompatActivity {
             return "";
         }
 
-    }
+    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
