@@ -47,6 +47,22 @@
             android:label="@string/title_activity_login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name="com.factrack.forms.getSchedule"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.factrack.forms.teacherForm"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.factrack.forms.DialogActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.factrack.forms.addSchedule"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name="com.factrack.login.ResetPasswordActivity"
             android:label="@string/title_activity_reset_password"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -58,6 +74,10 @@
             android:name="com.factrack.teacherBottomNavigation.TeacherBottomNav"
             android:label="@string/title_activity_teacher_bottom_nav"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name="com.factrack.studentBottomNavigation.StudentBottomNav"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.factrack.teacherView.TeacherProfileActivity"
             android:label="@string/title_activity_teacher_bottom_nav"
