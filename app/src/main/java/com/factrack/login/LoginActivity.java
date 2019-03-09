@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.factrack.R;
+import com.factrack.forms.studentForm;
 import com.factrack.teacherBottomNavigation.TeacherBottomNav;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -103,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(LoginActivity.this, TeacherBottomNav.class);
+                                    Intent intent = new Intent(LoginActivity.this, /*TeacherBottomNav.class*/studentForm.class);
                                     startActivity(intent);
                                     finish();
                                 }

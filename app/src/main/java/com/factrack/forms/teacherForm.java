@@ -672,7 +672,9 @@ public class teacherForm extends AppCompatActivity {
         final String teacher_homepage = homepage.getText().toString().trim();
         final String teacher_imageLink = uploadImage();
 
-        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, Building, teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleObj);
+        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation,
+                teacher_department, teacher_mobileNo, teacher_officeNo, Building,
+                teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleObj);
         root = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
