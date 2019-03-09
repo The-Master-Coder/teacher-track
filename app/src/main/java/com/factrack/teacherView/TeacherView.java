@@ -15,11 +15,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.factrack.R;
+import com.factrack.containers.Schedule;
+import com.factrack.containers.Slot;
 import com.factrack.containers.teacherFormData;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -197,6 +202,17 @@ public class TeacherView extends Fragment {
     public void init() {
         userId = user.getUid();
         faculty = root.child("faculty").child(userId);
+//        Slot s1 = new Slot("251", "CC3", 2,35, 3, 20 );
+//        Slot s2 = new Slot("251", "CC3", 4,45, 6, 40 );
+//        Slot s3 = new Slot("251", "CC3", 7,55, 8, 60 );
+//        Map<String, List<Slot>> schedules = new HashMap<String, List<Slot>>();;
+//        schedules.put("monday", Arrays.asList(s1, s2, s3));
+//
+//        Schedule s = new Schedule(schedules);
+//
+//        teacherFormData data = new teacherFormData("Ayush", "a@a.com", "one man army", "NA", "8687314230", "NA", "CC3", "251", "NA", "NA", s);
+//
+//        faculty.setValue(data);
 
         faculty.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

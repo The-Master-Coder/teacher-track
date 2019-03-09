@@ -11,12 +11,13 @@ public class teacherFormData {
     public String imageLink;
     public String building;
     public String roomNo;
+    public Schedule schedule;
 
     public teacherFormData() {
 
     }
 
-    public teacherFormData(String name, String email, String designation, String department, String mobileNo, String officeNo, String building, String roomNo,String homepage, String imageLink) {
+    public teacherFormData(String name, String email, String designation, String department, String mobileNo, String officeNo, String building, String roomNo,String homepage, String imageLink, Schedule schedule) {
         this.name = name;
         this.designation = designation;
         this.department = department;
@@ -27,5 +28,6 @@ public class teacherFormData {
         this.roomNo = roomNo;
         this.homepage = homepage;
         this.imageLink = imageLink;
+        this.schedule = schedule;
     }
 }
