@@ -32,8 +32,13 @@ import com.factrack.containers.Slot;
 import com.factrack.containers.studentFormData;
 import com.factrack.containers.teacherFormData;
 import com.factrack.login.SignupActivity;
+<<<<<<< HEAD
 import com.factrack.studentBottomNavigation.StudentBottomNav;
 import com.factrack.teacherBottomNavigation.TeacherBottomNav;
+||||||| merged common ancestors
+=======
+import com.factrack.teacherBottomNavigation.TeacherBottomNav;
+>>>>>>> 9ff7573128c1aa289df5e0655ef23a01fd0ecaaa
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -203,8 +208,14 @@ public class teacherForm extends AppCompatActivity {
                 scheduleObj.schedules.put("thursday", l4);
                 scheduleObj.schedules.put("friday", l5);
                 saveData();
+<<<<<<< HEAD
                 //uploadImage();
                 startActivity(new Intent(teacherForm.this, TeacherBottomNav.class));
+||||||| merged common ancestors
+                startActivity(new Intent(teacherForm.this, teacherForm.class));
+=======
+                startActivity(new Intent(teacherForm.this, TeacherBottomNav.class));
+>>>>>>> 9ff7573128c1aa289df5e0655ef23a01fd0ecaaa
                 finish();
             }
         });
@@ -735,13 +746,25 @@ public class teacherForm extends AppCompatActivity {
         final String teacher_imageLink = "hardcoded_image_link";
         final Schedule teacher_schedule = scheduleObj;
 
+<<<<<<< HEAD
 
 
 
+||||||| merged common ancestors
+<<<<<<< HEAD
+        teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation, teacher_department, teacher_mobileNo, teacher_officeNo, Building, teacher_roomNo, teacher_homepage, teacher_imageLink, teacher_schedule);
+=======
+=======
+>>>>>>> 9ff7573128c1aa289df5e0655ef23a01fd0ecaaa
         teacherFormData teacher_info = new teacherFormData(teacher_name, teacher_email, teacher_designation,
                 teacher_department, teacher_mobileNo, teacher_officeNo, Building,
                 teacher_roomNo, teacher_homepage, teacher_imageLink, scheduleObj);
+<<<<<<< HEAD
 
+||||||| merged common ancestors
+>>>>>>> a8ec446bdd62010d9f57600879e9023e10f8ef9d
+=======
+>>>>>>> 9ff7573128c1aa289df5e0655ef23a01fd0ecaaa
         root = FirebaseDatabase.getInstance().getReference();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         userId = user.getUid();
