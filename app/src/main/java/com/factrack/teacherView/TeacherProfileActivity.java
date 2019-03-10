@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -214,8 +215,9 @@ public class TeacherProfileActivity extends AppCompatActivity {
                 email.setText(teacher_info.email);
                 homepage.setText(teacher_info.homepage);
                 teacherSchedule = teacher_info.schedule;
+                Log.e("image",""+ teacher_info.imgLink);
                 Glide.with(TeacherProfileActivity.this)
-                        .load(teacher_info.imageLink)
+                        .load(teacher_info.imgLink)
                         .apply(RequestOptions.circleCropTransform())
                         .into(image);
 

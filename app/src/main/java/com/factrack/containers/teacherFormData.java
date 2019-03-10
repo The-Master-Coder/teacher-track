@@ -8,7 +8,7 @@ public class teacherFormData {
     public String mobileNo;
     public String officeNo;
     public String homepage;
-    public String imageLink;
+    public String imgLink;
     public String building;
     public String roomNo;
     public Schedule schedule;
@@ -17,7 +17,7 @@ public class teacherFormData {
 
     }
 
-    public teacherFormData(String name, String email, String designation, String department, String mobileNo, String officeNo, String building, String roomNo,String homepage, String imageLink, Schedule schedule) {
+    public teacherFormData(String name, String email, String designation, String department, String mobileNo, String officeNo, String building, String roomNo,String homepage, String imgLink, Schedule schedule) {
         this.name = name;
         this.designation = designation;
         this.department = department;
@@ -27,7 +27,7 @@ public class teacherFormData {
         this.building = building;
         this.roomNo = roomNo;
         this.homepage = homepage;
-        this.imageLink = imageLink;
+        this.imgLink = imgLink;
         this.schedule = schedule;
     }
 }

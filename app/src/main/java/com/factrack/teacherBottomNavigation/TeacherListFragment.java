@@ -144,20 +144,25 @@ public class TeacherListFragment extends Fragment   {
                 Calendar curr = Calendar.getInstance();
                 Map<String, List<Slot>> schedule ;
                 Map <Integer,String> mapDay = new HashMap<>();
-                mapDay.put(1,"sunday");
-                mapDay.put(2,"monday");
-                mapDay.put(3,"tuesday");
-                mapDay.put(4,"wednesday");
-                mapDay.put(5,"thursday");
-                mapDay.put(6,"friday");
-                mapDay.put(7,"saturday");
+                mapDay.put(1,"monday");
+                mapDay.put(2,"tuesday");
+                mapDay.put(3,"wednesday");
+                mapDay.put(6,"saturday");
+                mapDay.put(4,"thursday");
+                mapDay.put(5,"friday");
+                mapDay.put(7,"sunday");
 
                 for(DataSnapshot faculties: dataSnapshot.getChildren()) {
                     teacherFormData teacher_info = faculties.getValue(teacherFormData.class);
-                    schedule = teacher_info.schedule.schedules;
+                    if(teacher_info.schedule != null) {
+                        schedule = teacher_info.schedule.schedules;
+                    }
+                    else
+                        continue;
                     int day = curr.DAY_OF_WEEK;
                     Calendar start = Calendar.getInstance();
                     Calendar end = Calendar.getInstance();
+                    Log.e(mapDay.get(day),teacher_info.name);
                     List <Slot> slots = schedule.get(mapDay.get(day));
                     boolean flag = false;
                     if(slots != null) {
@@ -173,7 +178,7 @@ public class TeacherListFragment extends Fragment   {
                     }
 
                     if(flag)
-                        items.add(0,new TeacherData(teacher_info.name,teacher_info.imageLink,teacher_info.designation,teacher_info.building,teacher_info.roomNo,faculties.getKey()) );
+                        items.add(0,new TeacherData(teacher_info.name,teacher_info.imgLink,teacher_info.designation,teacher_info.building,teacher_info.roomNo,faculties.getKey()) );
                     //Log.e("name",teacher_info.imageLink);
                 }
                 teacherList.clear();

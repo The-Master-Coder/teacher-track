@@ -202,9 +202,9 @@ public class teacherForm extends AppCompatActivity {
                 scheduleObj.schedules.put("wednesday", l3);
                 scheduleObj.schedules.put("thursday", l4);
                 scheduleObj.schedules.put("friday", l5);
-                //saveData();
-                uploadImage();
-                startActivity(new Intent(teacherForm.this, teacherForm.class));
+                saveData();
+                //uploadImage();
+                startActivity(new Intent(teacherForm.this, TeacherBottomNav.class));
                 finish();
             }
         });

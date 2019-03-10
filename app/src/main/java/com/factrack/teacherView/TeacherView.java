@@ -268,7 +268,7 @@ public class TeacherView extends Fragment {
                 homepage.setText(teacher_info.homepage);
                 teacherSchedule = teacher_info.schedule;
                 Glide.with(context)
-                        .load(teacher_info.imageLink)
+                        .load(teacher_info.imgLink)
                         .apply(RequestOptions.circleCropTransform())
                         .into(image);
 

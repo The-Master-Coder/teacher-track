@@ -42,7 +42,7 @@ public class StudentBottomNav extends AppCompatActivity {
                     return true;
                 case R.id.navigation_notifications:
                     toolbar.setTitle("Offline Teachers");
-                    fragment = new TeacherListFragmentStu();
+                    fragment = new TeacherListFragmentStuOffline();
                     loadFragment(fragment);
                     return true;
             }

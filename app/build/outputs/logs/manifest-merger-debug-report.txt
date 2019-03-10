@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
+ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
+INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
+INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
+INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
 MERGED from [com.android.support:design:28.0.0] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/39e89c7d93f5b50a0feedc4b25042a36/AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/551e2ee43a451749a573d0965d968de1/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0.aar/483a98269b2a8b36f79b18ca677251a5/AndroidManifest.xml:17:1-22:12
@@ -62,20 +62,20 @@ MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/shreyansh/.gradle/cach
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/0809894405422b639463c6ef98b0436c/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/814ccb707c71b491cc8d56fa1e6da0ba/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.0.aar/2d9073b1f8a03a3c0f17fbdc70c074f9/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
-INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
+INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
+INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
+INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
 	package
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:3:5-27
 		INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml
 		INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
 		INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-66:12
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:1-70:12
 		INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:2:11-69
@@ -108,7 +108,7 @@ MERGED from [com.google.firebase:firebase-storage-common:16.0.1] /home/shreyansh
 	android:name
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:8:22-64
 application
-ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:10:5-64:19
+ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:10:5-68:19
 MERGED from [com.android.support:design:28.0.0] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/39e89c7d93f5b50a0feedc4b25042a36/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/39e89c7d93f5b50a0feedc4b25042a36/AndroidManifest.xml:22:5-20
 MERGED from [com.github.bumptech.glide:glide:4.8.0] /home/shreyansh/.gradle/caches/transforms-1/files-1.1/glide-4.8.0.aar/dc6caeb41efcdb8eba2c6c70a6d5d7c0/AndroidManifest.xml:10:5-20
@@ -209,7 +209,7 @@ ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:32:9-3
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:35:13-56
 	android:name
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:33:13-46
-activity#com.factrack.forms.DialogActivity
+activity#com.factrack.login.SignupActivity
 ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:36:9-39:59
 	android:label
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:38:13-57
@@ -217,54 +217,62 @@ ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:36:9-3
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:39:13-56
 	android:name
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:37:13-49
-activity#com.factrack.forms.addSchedule
+activity#com.factrack.forms.DialogActivity
 ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:40:9-43:59
 	android:label
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:42:13-57
 	android:theme
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:43:13-56
 	android:name
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:41:13-46
-activity#com.factrack.login.ResetPasswordActivity
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:41:13-49
+activity#com.factrack.forms.addSchedule
 ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:44:9-47:59
 	android:label
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:46:13-66
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:46:13-57
 	android:theme
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:47:13-56
 	android:name
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:45:13-56
-activity#login.MainActivity
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:45:13-46
+activity#com.factrack.login.ResetPasswordActivity
 ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:48:9-51:59
 	android:label
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:50:13-59
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:50:13-66
 	android:theme
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:51:13-56
 	android:name
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:49:13-46
-activity#com.factrack.teacherBottomNavigation.TeacherBottomNav
-ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:52:9-55:72
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:49:13-56
+activity#login.MainActivity
+ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:52:9-55:59
 	android:label
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:54:13-70
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:54:13-59
 	android:theme
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:55:13-69
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:55:13-56
 	android:name
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:53:13-69
-activity#com.factrack.studentBottomNavigation.StudentBottomNav
-ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:56:9-59:59
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:53:13-46
+activity#com.factrack.teacherBottomNavigation.TeacherBottomNav
+ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:56:9-59:72
 	android:label
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:58:13-57
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:58:13-70
 	android:theme
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:59:13-56
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:59:13-69
 	android:name
 		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:57:13-69
-activity#com.factrack.teacherView.TeacherProfileActivity
-ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:60:9-63:72
+activity#com.factrack.studentBottomNavigation.StudentBottomNav
+ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:60:9-63:59
 	android:label
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:62:13-70
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:62:13-57
 	android:theme
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:63:13-69
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:63:13-56
 	android:name
-		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:61:13-63
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:61:13-69
+activity#com.factrack.teacherView.TeacherProfileActivity
+ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:64:9-67:72
+	android:label
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:66:13-70
+	android:theme
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:67:13-69
+	android:name
+		ADDED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml:65:13-63
 uses-sdk
 INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/shreyansh/teacher-track/app/src/main/AndroidManifest.xml
