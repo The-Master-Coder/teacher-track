@@ -1,6 +1,7 @@
 package com.factrack.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -128,7 +129,10 @@ public class SignupActivity extends AppCompatActivity {
                                     root = FirebaseDatabase.getInstance().getReference();
 
                                     root.child("user").child(userId).setValue(userType);
-
+                                    SharedPreferences sp=getSharedPreferences("UserType", 0);
+                                    SharedPreferences.Editor Ed=sp.edit();
+                                    Ed.putString("userType",userType );
+                                    Ed.commit();
 
                                     if(userType.equals("faculty"))
                                         startActivity(new Intent(SignupActivity.this, teacherForm.class));

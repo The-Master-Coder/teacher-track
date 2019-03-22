@@ -99,6 +99,12 @@
     <string name="department">Department</string>
     <string name="name">Name</string>
     <string name="designation">Designation</string>
+    <string name="title_activity_signup">Signup</string>
+    <string name="title_activity_getSchedule">GetSchedule</string>
+    <string name="title_activity_TeacherForm">TeacherForm</string>
+    <string name="title_activity_dialog">Dialog</string>
+    <string name="title_activity_add_schedule">AddSchedule</string>
+    <string name="title_activity_StudentForm">Student Form</string>
 
 
     <string-array name="departments">

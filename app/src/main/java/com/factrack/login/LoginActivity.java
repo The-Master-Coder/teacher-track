@@ -1,6 +1,7 @@
 package com.factrack.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -49,23 +50,33 @@ public class LoginActivity extends AppCompatActivity {
         root = FirebaseDatabase.getInstance().getReference();
 
         if (auth.getCurrentUser()!= null) {
-            userId = auth.getCurrentUser().getUid();
-            root.child("user").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    userType = dataSnapshot.getValue(String.class);
-                    if(userType.equals("faculty") )
-                        startActivity(new Intent(LoginActivity.this, TeacherBottomNav.class));
-                    else
-                        startActivity(new Intent(LoginActivity.this, StudentBottomNav.class));
-                    finish();
-                }
+//            userId = auth.getCurrentUser().getUid();
+//            root.child("user").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    userType = dataSnapshot.getValue(String.class);
+//                    if(userType.equals("faculty") )
+//                        startActivity(new Intent(LoginActivity.this, TeacherBottomNav.class));
+//                    else
+//                        startActivity(new Intent(LoginActivity.this, StudentBottomNav.class));
+//                    finish();
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+            SharedPreferences sp1=this.getSharedPreferences("UserType",0);
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
+            userType=sp1.getString("userType", "faculty");
 
-                }
-            });
+            assert userType != null;
+            if(userType.equals("faculty") )
+                startActivity(new Intent(LoginActivity.this, TeacherBottomNav.class));
+            else
+                startActivity(new Intent(LoginActivity.this, StudentBottomNav.class));
+            finish();
 
         }
 
@@ -140,6 +151,10 @@ public class LoginActivity extends AppCompatActivity {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                             userType = dataSnapshot.getValue(String.class);
+                                            SharedPreferences sp=getSharedPreferences("UserType", 0);
+                                            SharedPreferences.Editor Ed=sp.edit();
+                                            Ed.putString("userType",userType );
+                                            Ed.commit();
                                             if(userType.equals("faculty") )
                                                 startActivity(new Intent(LoginActivity.this, TeacherBottomNav.class));
                                             else

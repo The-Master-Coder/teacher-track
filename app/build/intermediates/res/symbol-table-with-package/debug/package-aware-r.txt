@@ -1673,9 +1673,15 @@ string remove_user
 string search_menu_title
 string send_password_reset_email
 string status_bar_notification_info_overflow
+string title_activity_StudentForm
+string title_activity_TeacherForm
+string title_activity_add_schedule
+string title_activity_dialog
+string title_activity_getSchedule
 string title_activity_login
 string title_activity_profile
 string title_activity_reset_password
+string title_activity_signup
 string title_activity_teacher_bottom_nav
 string title_dashboard
 string title_home

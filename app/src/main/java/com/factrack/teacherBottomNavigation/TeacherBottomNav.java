@@ -1,9 +1,12 @@
 package com.factrack.teacherBottomNavigation;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import com.factrack.R;
+import com.factrack.login.LoginActivity;
 import com.factrack.teacherView.TeacherView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,7 +19,7 @@ import android.view.MenuItem;
 import android.support.v7.widget.Toolbar;
 
 public class TeacherBottomNav extends AppCompatActivity {
-
+    private FirebaseAuth auth;
     private Toolbar toolbar;
     Fragment fragment;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -73,7 +76,17 @@ public class TeacherBottomNav extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        //get firebase auth instance
+        auth = FirebaseAuth.getInstance();
+        signOut();
+        Intent intent = new Intent(TeacherBottomNav.this, LoginActivity.class);
+        startActivity(intent);
         finish();
+    }
+
+    //sign out method
+    public void signOut() {
+        auth.signOut();
     }
 
 }
